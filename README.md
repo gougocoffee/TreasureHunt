@@ -2,7 +2,7 @@
 
 Are you ready to hunt treasures just like in the Hive and Mineplex?
 
-![](pic\Minecraft%202022_7_8%202_48_17.png)
+![](pic/Minecraft%202022_7_8%202_48_17.png)
 
 Commands:
 
