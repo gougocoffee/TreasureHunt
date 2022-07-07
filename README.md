@@ -4,15 +4,18 @@ Are you ready to hunt treasures just like in the Hive and Mineplex?
 
 (Default model is made on my own. I am learning Blockbench recently and this is my first model!)
 
-![](pic/Minecraft%202022_7_8%202_48_17.png)
-
-Commands:
+## Commands:
 /treasurehunt create - create a treasure
+
 /treasurehunt remove - remove a treasure
+
 /treasurehunt clearall  -  clear all players' records
+
 /treasurehunt help
 
-Language file is supported to change. Here is English version:
+![](pic/Minecraft%202022_7_8%202_48_17.png)
+
+## Language file (English version):
 
 > found_treasure=Congratulations, find the last %1% treasures and then you can get a reward!
 > 
