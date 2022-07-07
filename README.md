@@ -23,7 +23,6 @@ Language file is supported to change. Here is English version:
 > command_wrongUsage=/treasurehunt help
 > command_help_1=/treasurehunt add/remove - to add or remove a treasure
 > command_help_2=/treasurehunt clearall - clear all players' records
-> 
 > clearall_success=Clear all players' records success!
 > addTreasure_alreadyExist=You've created a treasure here!
 > addTreasure_success=Create a treasure at [ %1% ] !
