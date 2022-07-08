@@ -8,8 +8,10 @@ import cn.nukkit.event.EventHandler;
 import cn.nukkit.event.Listener;
 import cn.nukkit.event.entity.EntityDamageByEntityEvent;
 import cn.nukkit.event.entity.EntityDamageEvent;
+import cn.nukkit.item.ItemFirework;
 import cn.nukkit.level.ParticleEffect;
 import cn.nukkit.level.Position;
+import cn.nukkit.level.Sound;
 import cn.nukkit.level.particle.DustParticle;
 import cn.nukkit.level.particle.FlameParticle;
 import cn.nukkit.math.Vector3;
@@ -17,6 +19,7 @@ import cn.nukkit.nbt.tag.CompoundTag;
 import cn.nukkit.plugin.PluginBase;
 import cn.nukkit.utils.BlockColor;
 import cn.nukkit.utils.Config;
+import cn.nukkit.utils.DyeColor;
 import cn.nukkit.utils.TextFormat;
 
 import javax.imageio.ImageIO;
@@ -149,6 +152,7 @@ public class MainClass extends PluginBase implements Listener {
     public static void spawnTreasure(String position){
         String[] strings = position.split(":");
         Position pos = new Position(Double.parseDouble(strings[0]), Double.parseDouble(strings[1]), Double.parseDouble(strings[2]), Server.getInstance().getLevelByName(strings[3]));
+        if(Server.getInstance().getLevelByName(strings[3]) == null) { Server.getInstance().loadLevel(strings[3]); }
         CompoundTag tag = Entity.getDefaultNBT(new Vector3(pos.x, pos.y, pos.z));
         tag.putCompound("Skin", new CompoundTag()
                         .putByteArray("Data", treasureSkin.getSkinData().data)
@@ -229,15 +233,18 @@ public class MainClass extends PluginBase implements Listener {
                     for(String cmd : this.rewardCommands){
                         this.getServer().dispatchCommand(this.getServer().getConsoleSender(), cmd.replace("%player%", player.getName()));
                     }
+                    CreateFireworkApi.spawnFirework(player.getPosition(), DyeColor.YELLOW, ItemFirework.FireworkExplosion.ExplosionType.STAR_SHAPED);
                 }else{
                     player.sendMessage(translateString("already_found_all_treasures"));
                 }
             }else {
                 player.sendMessage(translateString("found_treasure", maxCollectCount - strings.size()));
+                player.getLevel().addSound(player.getPosition() ,Sound.NOTE_FLUTE);
             }
             return true;
         }else{
             player.sendMessage(translateString("already_found_treasure"));
+            player.getLevel().addSound(player.getPosition() ,Sound.NOTE_BASS);
         }
         return false;
     }
